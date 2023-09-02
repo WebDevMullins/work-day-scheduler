@@ -34,13 +34,10 @@ $(function () {
 	// time-block containing the button that was clicked? How might the id be
 	// useful when saving the description in local storage?
 	//
-
-	$('.saveBtn').click(function () {
-		// console.log('save clicked')
-		textHour = $(this).parent().attr('id')
-		userMsg = $(this).parent().find('.description').val()
-		console.log(textHour)
-		console.log('msg: ' + userMsg)
+	$('.saveBtn').click(function () {		
+		hour = $(this).parent().attr('id')
+		text = $(this).parent().find('.description').val()
+		localStorage.setItem(hour, text)
 	})
 
 	// TODO: Add code to get any user input that was saved in localStorage and set
