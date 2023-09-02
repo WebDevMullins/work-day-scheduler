@@ -34,14 +34,27 @@ $(function () {
 	// time-block containing the button that was clicked? How might the id be
 	// useful when saving the description in local storage?
 	//
-	$('.saveBtn').click(function () {		
-		hour = $(this).parent().attr('id')
-		text = $(this).parent().find('.description').val()
-		localStorage.setItem(hour, text)
+	$('.saveBtn').click(function () {
+		var hour = $(this).parent().attr('id')
+		var text = $(this).parent().find('.description').val()
+		if (!text) {
+			localStorage.removeItem(hour)
+			return
+		} else {
+			localStorage.setItem(hour, text)
+		}
 	})
 
 	// TODO: Add code to get any user input that was saved in localStorage and set
 	// the values of the corresponding textarea elements. HINT: How can the id
 	// attribute of each time-block be used to do this?
 	//
+	function loadLocalStorage() {
+		$('.time-block').each(function () {
+			var hour = $(this).attr('id')
+			var savedText = localStorage.getItem(hour)
+			$(this).find('.description').text(savedText)
+		})
+	}
+	loadLocalStorage()
 })
