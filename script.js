@@ -11,11 +11,9 @@ $(function () {
 	// past, present, and future classes? How can Day.js be used to get the
 	// current hour in 24-hour time?
 	var currentHour = dayjs().format('HH')
-	console.log('Current time is: ' + currentHour)
 
 	$('.time-block').each(function () {
 		var hourBlock = $(this).attr('id').slice(5, 7)
-		console.log(hourBlock)
 		$(this).removeClass('past present future')
 
 		if (currentHour > hourBlock) {
@@ -36,6 +34,15 @@ $(function () {
 	// time-block containing the button that was clicked? How might the id be
 	// useful when saving the description in local storage?
 	//
+
+	$('.saveBtn').click(function () {
+		// console.log('save clicked')
+		textHour = $(this).parent().attr('id')
+		userMsg = $(this).parent().find('.description').val()
+		console.log(textHour)
+		console.log('msg: ' + userMsg)
+	})
+
 	// TODO: Add code to get any user input that was saved in localStorage and set
 	// the values of the corresponding textarea elements. HINT: How can the id
 	// attribute of each time-block be used to do this?
